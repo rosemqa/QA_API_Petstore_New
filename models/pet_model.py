@@ -10,14 +10,14 @@ class Tag(BaseModel):
 
 class Category(BaseModel):
     id: int
-    name: str
+    name: Optional[str] = None
 
 
 class PetModel(BaseModel):
     id: int
     category: Optional[Category] = None
     name: Optional[str] = None
-    photoUrls: Optional[list[str]] = None
+    photoUrls: Optional[list[str | None]] = None
     tags: Optional[list[Tag]] = None
     status: Optional[str] = None
 
@@ -26,7 +26,7 @@ class PetListModel(BaseModel):
     items: list[PetModel]
 
 
-class DeletePetModel(BaseModel):
+class ApiResponseModel(BaseModel):
     code: int
     type: str
     message: str

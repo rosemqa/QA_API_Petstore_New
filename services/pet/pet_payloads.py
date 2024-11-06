@@ -5,7 +5,7 @@ fake = Faker()
 
 class PetPayloads:
     add_new_pet = {
-        "id": 1020, #fake.random_number(digits=19),
+        "id": fake.random_number(digits=19),
         "category": {
             "id": fake.random_number(3),
             "name": fake.word()
@@ -22,3 +22,34 @@ class PetPayloads:
         ],
         "status": "available"
     }
+
+    update_existing_pet = {
+        "id": add_new_pet['id'],
+        "category": {
+            "id": fake.random_number(3),
+            "name": fake.word()
+        },
+        "name": fake.first_name(),
+        "photoUrls": [
+            fake.image_url()
+        ],
+        "tags": [
+            {
+                "id": fake.random_number(3),
+                "name": fake.word()
+            }
+        ],
+        "status": "sold"
+    }
+
+    image = 'dog.jpg'
+
+    upload_image = {
+        'file': open(image, 'rb'),
+        'additionalMetadata': fake.word()
+    }
+
+    update_name_and_status = {
+            'name': fake.first_name(),
+            'status': 'sold'
+        }
