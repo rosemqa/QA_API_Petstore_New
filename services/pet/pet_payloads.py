@@ -1,3 +1,4 @@
+import random
 from faker import Faker
 
 fake = Faker()
@@ -20,7 +21,7 @@ class PetPayloads:
                 "name": fake.word()
             }
         ],
-        "status": "available"
+        "status": random.choice(['available', 'sold', 'pending'])
     }
 
     update_existing_pet = {
@@ -39,10 +40,10 @@ class PetPayloads:
                 "name": fake.word()
             }
         ],
-        "status": "sold"
+        "status": random.choice(['available', 'sold', 'pending'])
     }
 
-    image = 'dog.jpg'
+    image = 'files/dog.jpg'
 
     upload_image = {
         'file': open(image, 'rb'),
@@ -51,5 +52,5 @@ class PetPayloads:
 
     update_name_and_status = {
             'name': fake.first_name(),
-            'status': 'sold'
+            'status': random.choice(['available', 'sold', 'pending'])
         }

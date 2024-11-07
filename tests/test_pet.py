@@ -32,7 +32,7 @@ class TestPet(BaseTest):
         pet_id = 102030  # can accept non existent ID
         pet = self.pet_api.upload_image(pet_id)
         data_text = PetPayloads.upload_image['additionalMetadata']
-        image = PetPayloads.image
+        image = PetPayloads.image.split('/')[1]
         assert data_text and image in pet.message, 'Image name or additional data is missing in response message'
 
     @allure.description('Can update the name and status of an existed pet using form data')
@@ -61,7 +61,6 @@ class TestPet(BaseTest):
         # UPDATE PET DATA
         edit_pet = self.pet_api.update_all_pet_data()
         assert edit_pet.model_dump() == PetPayloads.update_existing_pet, 'Check response for PUT request'
-        print(edit_pet)
 
         # GET PET INFO
         updated_pet = self.pet_api.get_pet_by_id(pet_id)
