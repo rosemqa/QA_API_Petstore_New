@@ -33,7 +33,8 @@ class TestPet(BaseTest):
         pet = self.pet_api.upload_image(pet_id)
         data_text = PetPayloads.upload_image['additionalMetadata']
         image = PetPayloads.image.split('/')[1]
-        assert data_text and image in pet.message, 'Image name or additional data is missing in response message'
+        assert data_text in pet.message and image in pet.message, \
+            'Image name or additional data is missing in response message'
 
     @allure.description('Can update the name and status of an existed pet using form data')
     def test_update_name_and_status(self, check):
