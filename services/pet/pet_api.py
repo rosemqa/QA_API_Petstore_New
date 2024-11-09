@@ -24,6 +24,7 @@ class PetApi(Helper):
         assert response.status_code == 200, f'{response.status_code}'
         self.attach_response(response.json())
         # model = PetListModel(items=response.json())
+        # model = [PetModel(**i) for i in response.json()]
         ta = TypeAdapter(list[PetModel])
         model = ta.validate_python(response.json())
         return model
