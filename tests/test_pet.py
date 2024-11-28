@@ -13,6 +13,13 @@ class TestPet(BaseTest):
         for pet in pets:
             assert pet.status == status, 'Status value in the response does not match the given status'
 
+    @allure.description('Can not find a pet by not existent pet ID')
+    @allure.tag('negative')
+    def test_find_not_existent_pet(self):
+        pet_id = 1234567890
+        pet = self.pet_api.get_not_existent_pet(pet_id)
+        assert pet.json == 'Pet not found', 'Check message in response'
+
     @allure.description('Can add a new pet to the store')
     def test_add_new_pet_to_the_store(self):
         # ADD A NEW PET
@@ -53,6 +60,12 @@ class TestPet(BaseTest):
         with check:
             assert updated_pet.status == PetPayloads.update_name_and_status['status'], 'Status not updated'
 
+    @allure.description('Can not update the pet name and status by not existent pet ID')
+    @allure.tag('negative')
+    def test_update_not_existent_pet(self):
+        update = self.pet_api.update_not_existent_pet()
+        assert update.message == 'not found', 'Check message in response'
+
     @allure.description('Can update an existing pet via json')
     def test_update_all_pet_data(self):
         # ADD A NEW PET
@@ -67,7 +80,7 @@ class TestPet(BaseTest):
         updated_pet = self.pet_api.get_pet_by_id(pet_id)
         assert updated_pet == edit_pet, 'Pet data not updated'
 
-    @allure.description('Can delete the pet from the store')
+    @allure.description('Can delete the pet from the store by pet ID')
     def test_delete_pet_from_the_store(self):
         # ADD A NEW PET
         pet = self.pet_api.add_new_pet_to_the_store()
@@ -85,3 +98,8 @@ class TestPet(BaseTest):
         # Verify that pet information doesn't return
         deleted_pet = self.pet_api.get_not_existent_pet(pet_id)
         assert deleted_pet.message == 'Pet not found', 'Check error message when get pet info by ID'
+
+    @allure.description('Can not delete the pet from the store by not existent pet ID')
+    @allure.tag('negative')
+    def test_delete_not_existent_pet(self):
+        self.pet_api.delete_not_existent_pet()

@@ -82,6 +82,18 @@ class PetApi(Helper):
         model = ApiResponseModel(**response.json())
         return model
 
+    @allure.step('Update pet name and status by not existent pet ID')
+    def update_not_existent_pet(self):
+        pet_id = 1234567890
+        response = MyRequests.post(
+            url=self.endpoints.update_pet_with_form_data(pet_id),
+            data=self.payloads.update_name_and_status
+        )
+        assert response.status_code == 404, f'{response.status_code} {response.text}'
+        self.attach_response(response.json())
+        model = ApiResponseModel(**response.json())
+        return model
+
     @allure.step('Update all pet data')
     def update_all_pet_data(self):
         response = MyRequests.put(
@@ -103,3 +115,13 @@ class PetApi(Helper):
         self.attach_response(response.json())
         model = ApiResponseModel(**response.json())
         return model
+
+    @allure.step('Delete pet from the store by not existent pet ID')
+    def delete_not_existent_pet(self):
+        pet_id = '1234567890'
+        response = MyRequests.delete(
+            url=self.endpoints.delete_pet(pet_id),
+            headers=self.headers.api_key
+        )
+        assert response.status_code == 404
+        return response
