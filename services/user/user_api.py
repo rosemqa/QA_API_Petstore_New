@@ -67,6 +67,15 @@ class UserAPI(Helper):
         model = ApiResponseModel(**response.json())
         return model
 
+    @allure.step('Delete user by not existent username')
+    def delete_not_existent_user(self):
+        username = '1234567890'
+        response = MyRequests.delete(
+            url=self.endpoints.delete_user(username)
+        )
+        assert response.status_code == 404, f'{response.status_code} {response.text}'
+        return response
+
     @allure.step('Login user with username and password')
     def login_user(self, username, password):
         response = MyRequests.get(

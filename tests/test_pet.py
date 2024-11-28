@@ -18,7 +18,7 @@ class TestPet(BaseTest):
     def test_find_not_existent_pet(self):
         pet_id = 1234567890
         pet = self.pet_api.get_not_existent_pet(pet_id)
-        assert pet.json == 'Pet not found', 'Check message in response'
+        assert pet.message == 'Pet not found', 'Check message in response'
 
     @allure.description('Can add a new pet to the store')
     def test_add_new_pet_to_the_store(self):

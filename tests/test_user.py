@@ -46,6 +46,16 @@ class TestUser(BaseTest):
         user = self.user_api.get_not_existent_user(username)
         assert user.message == "User not found", 'Check error message for GET request'
 
+    @allure.description('Can not delete a user by not existent username')
+    def test_delete_not_existent_user(self):
+        self.user_api.delete_not_existent_user()
+
+    @allure.description('Can not find a user by not existent username')
+    def test_find_not_existent_user(self):
+        username = '1234567890'
+        user = self.user_api.get_not_existent_user(username)
+        assert user.message == 'User not found', 'Check message in response'
+
     @allure.description('Can login with username and password')
     def test_login_user(self):
         # CREATE A NEW USER
