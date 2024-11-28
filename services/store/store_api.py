@@ -51,3 +51,14 @@ class StoreApi(Helper):
         self.attach_response(response.json())
         model = ApiResponseModel(**response.json())
         return model
+
+    @allure.step('Delete order by not existent ID')
+    def delete_not_existent_order(self):
+        order_id = 12345678980
+        response = MyRequests.delete(
+            url=self.endpoints.delete_order_by_id(order_id)
+        )
+        assert response.status_code == 404, f'{response.status_code} {response.text}'
+        self.attach_response(response.json())
+        model = ApiResponseModel(**response.json())
+        return model

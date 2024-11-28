@@ -27,3 +27,15 @@ class TestStore(BaseTest):
         # VERIFY THAT ORDER INFORMATION DOESN'T RETURN
         order = self.store_api.get_not_existent_order(order_id)
         assert order.message == 'Order not found', 'Check error message when get order info by ID'
+
+    @allure.description('Can not delete an order by not existent order ID')
+    def test_delete_not_existent_order(self):
+        order = self.store_api.delete_not_existent_order()
+        assert order.message == 'Order Not Found', 'Check message in response'
+
+    @allure.description('Can not find an order by not existent ID')
+    @allure.tag('negative')
+    def test_find_not_existent_order(self):
+        order_id = 1234567890
+        order = self.store_api.get_not_existent_order(order_id)
+        assert order.message == 'Order not found', 'Check message in response'
