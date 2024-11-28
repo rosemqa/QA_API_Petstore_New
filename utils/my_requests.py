@@ -13,7 +13,7 @@ class MyRequests:
             return response
 
     @staticmethod
-    def post(url: str, data: dict = None, json: dict = None, headers: dict = None, cookies: dict = None):
+    def post(url: str, data: dict = None, json: dict | list = None, headers: dict = None, cookies: dict = None):
         with allure.step(f'POST request to URL "{url}"'):
             Logger.add_request(url, data, json, headers, cookies, 'POST')
             response = requests.post(url, data=data, json=json, headers=headers, cookies=cookies)
