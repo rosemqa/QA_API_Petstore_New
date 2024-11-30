@@ -21,7 +21,7 @@ run_tests:
 #     - mkdir -p allure_results
 #     - cp -r public/history allure_results
     script: 
-        - docker compose up pytest_runner
+        - docker compose up api_tests
     after_script:
         - docker compose up report
     artifacts:
