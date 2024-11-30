@@ -1,0 +1,18 @@
+{
+    "id": 6954097265777371082,
+    "category": {
+        "id": 336,
+        "name": "enough"
+    },
+    "name": "Leslie",
+    "photoUrls": [
+        "https://storage-api.petstory.ru/resize/1000x1000x80/cb/48/7f/cb487f4677a640329e92ac0076004607.jpeg"
+    ],
+    "tags": [
+        {
+            "id": 106,
+            "name": "physical"
+        }
+    ],
+    "status": "sold"
+}

@@ -1,0 +1,18 @@
+{
+    "id": 6954097265777371082,
+    "category": {
+        "id": 157,
+        "name": "strong"
+    },
+    "name": "Christopher",
+    "photoUrls": [
+        "https://dummyimage.com/402x454"
+    ],
+    "tags": [
+        {
+            "id": 241,
+            "name": "above"
+        }
+    ],
+    "status": "available"
+}
