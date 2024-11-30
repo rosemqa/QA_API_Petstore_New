@@ -1,0 +1,18 @@
+{
+    "id": 508655340008204617,
+    "category": {
+        "id": 394,
+        "name": "guy"
+    },
+    "name": "Joshua",
+    "photoUrls": [
+        "https://storage-api.petstory.ru/resize/1000x1000x80/cb/48/7f/cb487f4677a640329e92ac0076004607.jpeg"
+    ],
+    "tags": [
+        {
+            "id": 807,
+            "name": "experience"
+        }
+    ],
+    "status": "pending"
+}

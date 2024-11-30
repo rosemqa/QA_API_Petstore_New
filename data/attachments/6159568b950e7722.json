@@ -1,0 +1,18 @@
+{
+    "id": 508655340008204617,
+    "category": {
+        "id": 177,
+        "name": "leader"
+    },
+    "name": "Micheal",
+    "photoUrls": [
+        "https://dummyimage.com/454x893"
+    ],
+    "tags": [
+        {
+            "id": 579,
+            "name": "significant"
+        }
+    ],
+    "status": "sold"
+}
