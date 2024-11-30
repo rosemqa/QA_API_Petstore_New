@@ -1,8 +1,0 @@
-allure-pytest
-pytest~=7.2.2
-requests~=2.32.0
-Faker
-pytest-check
-python-dotenv~=1.0.1
-pydantic
-pytest-xdist~=3.5.0
