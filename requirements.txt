@@ -6,3 +6,4 @@ pytest-check
 python-dotenv~=1.0.1
 pydantic
 pytest-xdist~=3.5.0
+pytest-rerunfailures~=11.1.2
